@@ -10,13 +10,13 @@ const client = new Client({
 
 client.connect();
 
-// client.query("SELECT NOW()", (err, res) => {
-//     console.log(err, res.rows[0].now);
-//     client.end();
-// });
-
-client.query("SELECT * FROM test", (err, res) => {
-  console.log(err);
-  console.log(JSON.stringify(res.rows));
-  client.end();
+client.query("SELECT NOW()", (err, res) => {
+    console.log(err, res.rows[0].now);
+    client.end();
 });
+
+// client.query("SELECT * FROM test", (err, res) => {
+//   console.log(err);
+//   console.log(JSON.stringify(res.rows));
+//   client.end();
+// });
