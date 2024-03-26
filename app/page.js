@@ -1,17 +1,19 @@
 import Image from "next/image";
 
 async function getData(){
-    const res = await fetch('http://localhost:3001/', {cache: "no-store"});
+  const res = await fetch('http://localhost:3001/', {cache: "no-store"});
     
   if (!res.ok) {
     throw new Error('Failed to fetch data')
   }
   
   let data = await res.text();
+  
   console.log(JSON.parse(data).rows[3].data);
   return JSON.parse(data).rows[3].data;
 }
 
+/*
 // async function getData(){
 //   console.log("///1");
 //   const res = await fetch('http://localhost:3001/', {cache: "no-store"});
@@ -38,6 +40,8 @@ async function getData(){
 // }
 
 // export default function Home() {
+*/
+
 export default async function Page() {
   const data = await getData()
 

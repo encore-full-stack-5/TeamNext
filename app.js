@@ -22,6 +22,7 @@ const client = new Client({
   port: 5432,
 });
 
+/*
 // const getData = () => {
 //   const { Client } = require('pg');
 //   const client = new Client({
@@ -45,22 +46,17 @@ const client = new Client({
 //     });
 //   });
 // };
+*/
 
+client.connect();
 const getData = () => {
   return new Promise((resolve) => {
-    client.connect();
     const result = client.query("SELECT * FROM test", (e, r) => {
+      // client.end;
       return resolve(r);
     });
   });
 }
-
-// const getData = client.query("SELECT * FROM test", (e, r) => {
-//   return r;
-//   // let data = r;
-//   // client.end();
-//   // return JSON.stringify(data.rows);
-// });
 
 app.get('/', (req, res) => {
   // getData().then(r => res.send(r)).catch(e => res.send(e));
